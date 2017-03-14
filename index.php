@@ -12,6 +12,9 @@ $statement2= $pdo->query("SELECT showTypes.type , genres.genre AS FirstGenres , 
                           ORDER BY genres.id");
 $resultat2 = $statement2->fetchAll();
 
+$statement3 = $pdo->query("SELECT title , performer , date , startTime FROM shows ORDER BY title");
+$resultat3 = $statement3->fetchAll();
+
 
 
 ?>
@@ -76,9 +79,14 @@ $resultat2 = $statement2->fetchAll();
         </tbody>
     </table>
 
-?>
 
 
+<?php foreach ($resultat3 as $value) : ?>
+
+        <p> <?= $value->title; ?> par <?= $value->performer; ?> commence <?= $value->date; ?> à <?= $value->startTime; ?> </p>
+
+
+    <?php endforeach ?>
 
 
 
